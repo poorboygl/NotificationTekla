@@ -103,11 +103,19 @@ namespace Notification
             {
                 int minutes = ExtractMinutes(text);
 
-                this.Invoke(() => SetBatteryMode(minutes));
+                this.Invoke(() =>
+                {
+                    SetBatteryMode(minutes);
+                    ShowTeklaMessage("Server đang chạy bằng UPS", $"Thời gian còn lại: {minutes} phút");
+                });
             }
             else if (text.StartsWith("AC-MODE"))
             {
-                this.Invoke(() => SetOnline());
+                this.Invoke(() =>
+                {
+                    SetOnline();
+                    ShowTeklaMessage("Server đang online", "");
+                });
             }
             else
             {
@@ -115,6 +123,7 @@ namespace Notification
                 {
                     lblStatus.Text = "Message không xác định";
                     lblMinutes.Text = text;
+                    ShowTeklaMessage("Message không xác định", text);
                 });
             }
         }
@@ -135,6 +144,19 @@ namespace Notification
         {
             public string text { get; set; } = "";
         }
+
+        private void ShowTeklaMessage(string status, string minutes)
+        {
+            // Nội dung thông báo
+            string msg = string.IsNullOrEmpty(minutes) ? status : $"{status}\n{minutes}";
+
+            // MessageBox.Show luôn phải Invoke trong UI thread
+            this.Invoke(() =>
+            {
+                System.Windows.Forms.MessageBox.Show(msg, "UPS Notification",
+                    System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+            });
+        }
     }
 
     // tiện mở rộng
@@ -148,4 +170,8 @@ namespace Notification
                 a();
         }
     }
+
+
+
+
 }

@@ -31,16 +31,15 @@
         /// 
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // fNotification
-            // 
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblMinutes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblStatus
             // 
+            this.structuresExtender.SetAttributeName(this.lblStatus, null);
+            this.structuresExtender.SetAttributeTypeName(this.lblStatus, null);
+            this.structuresExtender.SetBindPropertyName(this.lblStatus, null);
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblStatus.Location = new System.Drawing.Point(20, 20);
             this.lblStatus.Name = "lblStatus";
@@ -50,24 +49,30 @@
             // 
             // lblMinutes
             // 
+            this.structuresExtender.SetAttributeName(this.lblMinutes, null);
+            this.structuresExtender.SetAttributeTypeName(this.lblMinutes, null);
+            this.structuresExtender.SetBindPropertyName(this.lblMinutes, null);
             this.lblMinutes.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblMinutes.Location = new System.Drawing.Point(20, 70);
             this.lblMinutes.Name = "lblMinutes";
             this.lblMinutes.Size = new System.Drawing.Size(300, 25);
             this.lblMinutes.TabIndex = 1;
-            this.lblMinutes.Text = "";
             // 
             // fNotification
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.structuresExtender.SetAttributeName(this, null);
+            this.structuresExtender.SetAttributeTypeName(this, null);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 130);
+            this.structuresExtender.SetBindPropertyName(this, null);
+            this.ClientSize = new System.Drawing.Size(240, 80);
             this.Controls.Add(this.lblMinutes);
             this.Controls.Add(this.lblStatus);
             this.Name = "fNotification";
             this.Text = "Server Notification";
             this.Load += new System.EventHandler(this.fNotification_Load);
             this.ResumeLayout(false);
+
         }
 
         #endregion
